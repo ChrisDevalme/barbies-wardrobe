@@ -32,6 +32,14 @@ const careerDescriptions = [
     {
         name: 'influencer',
         description: 'talk about stuff on social media and people say wow and i get paid'
+    },
+    {
+        name: 'stripper',
+        description: 'well paid entertainment'
+    },
+    {
+        name: 'UX-Designer',
+        description: 'Software developers best friend or enemy'
     }
 ]
 const careerIncomes = [
@@ -41,7 +49,8 @@ const careerIncomes = [
  3850,
  4850,
  5850,
- 6850
+ 6850,
+ 500
 ];
 const careers = [];
 
@@ -72,9 +81,8 @@ class Clothing {
 }
 
 const birkin = new Clothing('Birkin Bag', 'Hermes', 'purple', 'bag', 'lg', 15470 )
-
-
-
+const chanel = new Clothing('Chanel bag', 'Chanel', 'black', 'bag', 'med', 35000 )
+const redBottoms = new Clothing('Red Bottoms', 'Christian Loboutin', 'black', 'shoes', '6', 3000)
 
 
 // Game Screen
@@ -102,7 +110,7 @@ barbie.render = () => {
 `;
 }
 
-barbie.render()
+barbie.render();
 
 
 
@@ -131,3 +139,33 @@ workButton.addEventListener('click', ()=>{
     barbie.render();
 })
 
+const redBottomButton = document.getElementById('red-bottoms');
+
+redBottomButton.addEventListener('click' , () => {
+    if(barbie.wallet >= redBottoms.price){
+        barbie.wardrobe.push(redBottoms);
+        barbie.wallet -= redBottoms.price;
+        barbie.render();
+        // WE updated the wardrobe that belongs to barbie so the object was changed
+    // the object control the information that is visible to us on the screen
+    // I want to re-render the content so that i can see the updated information in the browser
+    } else {
+        alert('Stop trippin you know you aint got it like that');
+    }
+
+})
+
+const chanelButton = document.getElementById('chanel');
+
+chanelButton.addEventListener('click' , () => {
+    if(barbie.wallet >= chanel.price){
+        barbie.wardrobe.push(chanel);
+        barbie.wallet -= chanel.price;
+        barbie.render();
+        // WE updated the wardrobe that belongs to barbie so the object was changed
+    // the object control the information that is visible to us on the screen
+    // I want to re-render the content so that i can see the updated information in the browser
+    } else {
+        alert('Stop trippin you know you aint got it like that');
+    }
+})
